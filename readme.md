@@ -25,3 +25,16 @@
 
 3. Add a new javaScript file with the name `index.js` and a test for this file with the name `index.test.js`. Jest will run all the files which include `test.js` when the command `npm run test` is executed.
 4. Write your code in the `index.js` and the tests in the `index.test.js` file. Remember to export and import the functions!
+
+## Week 3
+### Dom manipulation 
+This week we started to work on a dynamic book list! We covered how to:
+- Add elements dynamically based on a javaScript array of data
+- Add event listeners to buttons
+- Change text of the button on the click
+
+### interesting things to look into: 
+- How to change the style of the books card we have read after a click on the button
+- Add input fields to add new books to the list.
+
+
