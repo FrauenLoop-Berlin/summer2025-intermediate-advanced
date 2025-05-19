@@ -1,0 +1,7 @@
+.bookList {
+  width: 50%;
+}
+.bookCard {
+  border: 2px slateblue solid;
+  text-align: center;
+}
