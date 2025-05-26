@@ -13,3 +13,14 @@ function setAlarm(employed, vacation) {
 }
 // export functions
 module.exports =  { addNumbers, setAlarm }
+
+
+// For each
+let tableData = ["<td></td>", "<td></td>"]
+function addNumbers(number){
+
+  console.log(number);
+  
+}
+tableData.forEach((item, index) => {addNumbers(index)})
+tableData.forEach(function(item, b){addNumbers(b)})

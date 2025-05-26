@@ -68,3 +68,64 @@ statusButtons.forEach(button => {
     }
   })
 })
+
+// Week 4: Add books from an API
+
+// build cards for books from APi
+const generateBookCards = (book) => {
+  let bookCard = document.createElement('div')
+  bookCard.classList.add('bookCard')
+  bookCard.innerHTML = `
+    <h3 class='title'>${book.title}</h3>
+    <h4 class='subject'>${book.subject[0] + ", " + book.subject[1]}</h4>
+      <p>${book.authors.map((authorObject) => authorObject.name)}</p>
+      <button class='bookStatus'>Want to read this book</button>
+      `
+  let bookListContainer = document.querySelector('.booksFromApi')
+  bookListContainer.appendChild(bookCard)
+}
+
+
+// get the books from the api
+const getBooks = async () => {
+  try {
+    let response = await fetch('http://openlibrary.org/subjects/love.json')
+    let data = await response.json()
+    console.log(response);
+    console.log(data);
+    // always throw an error:
+    // throw new Error ('from try')
+    // error handling: 
+    if (response.status !== 200) {
+      throw new Error('Something went wrong fetching the book data!')
+    }
+    // create cards for each book in the data
+    data.works.forEach(book => { generateBookCards(book) })
+
+  } catch (error) {
+    console.error(error.message);
+    // Display a message
+    let tragetForMessage = document.querySelector('.booksFromApi')
+    let messageToPrint = document.createElement('p')
+    messageToPrint.innerText = error.message
+    tragetForMessage.appendChild(messageToPrint)
+  }
+
+}
+
+// getBooks()
+
+// add books using the input field:
+
+let bookInputField = document.querySelector('#newBook')
+
+bookInputField.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter'){
+  console.log(event.target.value);
+  let list = document.querySelector('.addedBooks')
+  let listItem = document.createElement('li')
+  listItem.innerText = event.target.value
+  list.appendChild(listItem)
+  bookInputField.value = ''
+  }
+})
