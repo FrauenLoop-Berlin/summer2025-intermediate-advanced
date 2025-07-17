@@ -35,10 +35,57 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Requests to database or APIs
 
-The project structure is as follows. 
+##### set up for the data base
+**MongoDB Atlas Setup (Cloud):**
+
+- Create a free account at MongoDB Atlas
+- Create a cluster
+- Create a database user
+- Get your connection string 
+
+**In your project**
+- Add the connection string to the .env file (you need to create this file, but can copy the structure from `.example.env`) As this file contains all your API Keys and connections strings you don't want to share with others, the `.env` file is not shared via GitHub. 
+
+**Local MongoDB Setup:**
+Use this version if you don't want to set up a data base in the Atlas cloud (works as long as you don't deploy your code)
+
+- Install MongoDB locally
+- Start MongoDB service
+- Use `mongodb://localhost:27017/nameofYourDatabase` as a connection string
+
+
 ### Data base requests
-The requests to databases are made in the files `route.js` in the `api/database` folder! It contains a GET and a POST request (with validation)
-The database demoed here is a mongoDB on a Atlas Cloud and uses mongoose ODM for validation and connection 
+The project structure is as follows. 
+
+The requests to databases are made in the files `route.js` in the `/src/api/database` folder! It contains a GET and a POST request.
+
+The database demoed here is a mongoDB on a Atlas Cloud. 
+
+#### GET: 
+Response is a json with this strucure:
+
+``` json
+{
+    "_id": "672889ee5c6caf238e39dad0",
+    "text": "test 1",
+    "status": "open",
+    "__v": 0,
+    "createdAt": "2025-07-17T08:28:09.105Z"
+  }
+```
+#### POST
+The post request will save a new entry in the data base
+
+the request body looks like this
+```json
+ {  
+   "task": "test 1",
+    "status": "open" 
+ }
+```
+The `id` is added in the route using UUID and mongoose also generates an `_id` field for each entry.
+
+The fields `task` and `status` are validatet using the package `validator`
 
 
 ### Api calls
