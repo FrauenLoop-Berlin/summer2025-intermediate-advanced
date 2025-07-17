@@ -33,7 +33,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 # Code Demos
 
-## Requests to database or APIs
+## Requests to database 
 
 ##### set up for the data base
 **MongoDB Atlas Setup (Cloud):**
@@ -89,7 +89,7 @@ The fields `task` and `status` are validated using the package `validator`
 
 The React Component `TodoList.js` displays the data from the database and also contains the form to input a new todo. Loading the component, a GET requset is sent to fetch the already exisitng data. A click on the `Add Todo` button triggers a POST resuest to the server and inserts the data to the database.
 
-### Api calls
+## Api calls
 #### Server side
 (no dynamic changes after data is loaded once)
 An example of this is in the `/serversideComponentWithFetch/page.js`
@@ -102,7 +102,7 @@ The request handlers for requests to APIs are in the file `route.js` in the `api
 It contains a GET request to random-users. The request is triggered by a function in the component  `users/page.js`. The data from this request is dislayed in the same component. 
 
 
-
+## Folder structure
 ``` plaintext
 my-nextjs-app/
 ├── public/                # Static assets (images, icons, etc.)
@@ -110,27 +110,28 @@ my-nextjs-app/
 │   ├── app/               # App Router root (replaces pages/)
 │   │   ├── layout.tsx     # Global layout (HTML shell)
 │   │   ├── page.tsx       # Homepage route (/)
-│   │   ├── about/         
-│   │   │   └── page.tsx   # Route for /about
+│   │   ├── users/         
+│   │   │   └── page.tsx   # Route for /users client side component
+│   │   ├── serverSideComponentWithFetch/         
+│   │   │   └── page.tsx   # Route for /users server side component
+│   │   ├── todos/         
+│   │   │   └── page.tsx   # Route for /todos client side component
 │   │   ├── api/           # API routes
-│   │   │   ├── hello/
-│   │   │   │   └── route.ts 
+│   │   │   ├── todos/
+│   │   │   │   └── route.ts # request handler for a GET and POST request to the database
 │   │   │   └── users/
 │   │   │       └── route.ts # request handler for a GET request to the API
-│   │   └── dashboard/
-│   │       ├── layout.tsx
-│   │       └── page.tsx
 │   ├── components/        # Reusable UI components
-│   │   └── Navbar.tsx
+│   │   └── TodoList.js
 │   ├── lib/               # Utilities, data fetching, helpers
-│   │   └── fetchUsers.ts
-│   ├── styles/            # Global CSS or Tailwind config
-│   │   └── globals.css
-│   └── types/             # TypeScript types/interfaces
-│       └── user.ts
-├── .env.local             # Environment variables
+│   │   └── mongoose..js
+│   └── models/             # Mogoose scheema for a Todo
+│       └── Tood.js
+├── globals.css          # Global CSS or Tailwind config
+├── .env             # Environment variables
+├── .exampel.env             # Example of Environment variables used in this project
 ├── next.config.js         # Next.js config
-├── tsconfig.json          # TypeScript config (if using TS)
+├── jsconfig.json          # JS config 
 └── package.json
 
 ```
