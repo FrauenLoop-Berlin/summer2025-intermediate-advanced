@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TodoList from '@/components/TodoList'
 export default function HomePage() {
   return (
     <div>
@@ -7,6 +8,8 @@ export default function HomePage() {
       <nav className="flex bg-pink-500">
       <Link href="/users/">Users - clientside component</Link>
       <Link href="/serversideComponentWithFetch/">Users - serverside component</Link>
+            <TodoList />
+
       </nav>
     </div>
   )

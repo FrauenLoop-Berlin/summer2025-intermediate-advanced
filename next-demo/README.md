@@ -57,7 +57,7 @@ Use this version if you don't want to set up a data base in the Atlas cloud (wor
 ### Data base requests
 The project structure is as follows. 
 
-The requests to databases are made in the files `route.js` in the `/src/api/database` folder! It contains a GET and a POST request.
+The requests to databases are made in the files `route.js` in the `/src/api/todos` folder! It contains a GET and a POST request.
 
 The database demoed here is a mongoDB on a Atlas Cloud. 
 
@@ -85,8 +85,9 @@ the request body looks like this
 ```
 The `id` is added in the route using UUID and mongoose also generates an `_id` field for each entry.
 
-The fields `task` and `status` are validatet using the package `validator`
+The fields `task` and `status` are validated using the package `validator`
 
+The React Component `TodoList.js` displays the data from the database and also contains the form to input a new todo. Loading the component, a GET requset is sent to fetch the already exisitng data. A click on the `Add Todo` button triggers a POST resuest to the server and inserts the data to the database.
 
 ### Api calls
 #### Server side
